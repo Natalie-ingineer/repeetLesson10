@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countdown timer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+    />
     <link rel="stylesheet" href="css/common.css" />
+    <title>Filmoteca</title>
   </head>
   <body>
-    <p><a href="index.html">Go back</a></p>
+    <ul class="js-movie-list movie-list"></ul>
+    <!-- Load more -->
+    <!-- <div class="button-container">
+        <button class="js-load-more load-more-hidden">Load more</button>
+    </div> -->
+
+    <!-- Infinity scroll -->
+    <!-- <div class="js-guard"></div> -->
 
     <input type="text" id="datetime-picker" />
     <button type="button" data-start>Start</button>
@@ -31,6 +42,9 @@
       </div>
     </div>
 
-    <script src="js/02-timer.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script src="js/filmoteca.js" type="module"></script>
   </body>
 </html>
