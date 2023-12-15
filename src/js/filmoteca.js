@@ -17,11 +17,21 @@
 const container = document.querySelector('.js-movie-list');
 const loadMore = document.querySelector('.js-load-more');
 let page = 1;
+//  499 or 999
+
+loadMore.addEventListener('click', onLoadMore);
+
+// тут за замовчуванням page = 1;
 
 serviceMovie()
   .then(data => {
-    // console.log(data);
+    // console.log(data.page);
     container.insertAdjacentHTML('beforeend', createMarkup(data.results));
+
+    if (data.page < data.total_pages) {
+      // data.page < 500
+      loadMore.classList.replace('load-more-hidden', 'load-more');
+    }
   })
   .catch(error => console.log('Error', error));
 
@@ -57,6 +67,19 @@ function createMarkup(arr) {
      </li>`
     )
     .join('');
+}
+
+function onLoadMore() {
+  page += 1;
+  serviceMovie(page).then(data => {
+    // console.log(data.total_pages);
+    container.insertAdjacentHTML('beforeend', createMarkup(data.results));
+
+    if (data.page >= data.total_pages) {
+      // data.page >= 500
+      loadMore.classList.replace('load-more', 'load-more-hidden');
+    }
+  });
 }
 
 // -------------------------------------------------------------
