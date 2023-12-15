@@ -211,6 +211,7 @@ function handlePagination(entries, observer) {
   entries.forEach(entry => {
     console.log(entry);
     if (entry.isIntersecting) {
+      console.log('ok');
       page += 1;
       serviceMovie(page)
         .then(data => {
